@@ -20,7 +20,7 @@ node('jenkins-slave') {
     stage('Push') {
         echo "4.Push Docker Image Stage"
         withCredentials([usernamePassword(credentialsId: 'docker-registry', passwordVariable: 'password', usernameVariable: 'user')]) {
-            sh "docker login -u ${user} -p ${password} registry.cn-shenzhen.aliyuncs.com"
+            sh "docker login -u ${user} -p ${password} registry.cn-hangzhou.aliyuncs.com"
             sh "docker push registry.cn-hangzhou.aliyuncs.com/tianyaok/jenkins-demo:${build_tag}"
         }
     }
