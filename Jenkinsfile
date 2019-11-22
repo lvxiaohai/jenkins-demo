@@ -14,7 +14,8 @@ node('jenkins-slave') {
     }
     stage('Build') {
         echo "3.Build Docker Image Stage"
-        sh "docker build -t registry.cn-hangzhou.aliyuncs.com/tianyaok/jenkins-demo:${build_tag} ."
+        sh "docker build -t tianyaok/jenkins-demo:${build_tag} ."
+        sh "docker tag jenkins-demo:${build_tag} registry.cn-hangzhou.aliyuncs.com/tianyaok/jenkins-demo:${build_tag}"
     }
     stage('Push') {
         echo "4.Push Docker Image Stage"
